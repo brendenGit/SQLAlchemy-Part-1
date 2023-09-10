@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="user-container">
+    <img src="{{ user.profile_picture }}" alt="Users Profile Picture" class="profile-picture">
+    <div class="user-info">
+        <h1 class="user-h1">{{ user.first_name }} {{ user.last_name }}</h1>
+        <div class="button-container">
+            <a href="/users/{{ user.id }}/edit"><button class="edit">Edit</button></a>
+            <form method="POST" action="/users/{{ user.id }}/delete">
+                <button type="submit" name="action" value="save" class="delete">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+<a href="/">User List</a>
+{% endblock %}
