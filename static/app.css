@@ -1,81 +1,8 @@
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/* somewhat random stuff */
 a {
     text-decoration: none;
-}
-
-.add {
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    display: flex;
-    font-size: .75rem;
-    margin-top: 10px;
-    width: 100px;
-    justify-content: center;
-}
-
-.form-container {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    margin-top: 5px;
-}
-
-.form-container p {
-    margin-bottom: 5px;
-}
-
-button.add {
-    align-self: flex-end;
-}
-
-h1 {
-    margin-bottom: 5px;
-}
-
-.edit {
-    background-color: blue;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    padding: 8px 32px;
-    text-decoration: none;
-    display: flex;
-    font-size: .75rem;
-    margin-top: 10px;
-    width: 50%;
-    justify-content: center;
-}
-
-.delete {
-    background-color: red;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    padding: 8px 32px;
-    text-decoration: none;
-    display: flex;
-    font-size: .75rem;
-    margin-top: 10px;
-    width: 50%;
-    justify-content: center;
-}
-
-.cancel {
-    background-color: transparent;
-    border: 1px solid rgb(95, 95, 240);
-    border-radius: 5px;
-    color: rgb(95, 95, 240);
-    text-decoration: none;
-    display: flex;
-    font-size: .75rem;
-    margin-top: 10px;
-    margin-right: 5px;
-    width: 25%;
-    align-items: center;
-    justify-content: center;
 }
 
 .user-container {
@@ -96,18 +23,122 @@ h1 {
     margin-left: 15px;
 }
 
-.button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
 .user-h1 {
     margin-bottom: 0px;
 }
 
-.button-container-edit {
+
+
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/* form stuff */
+.form-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 50%;
+    height: 100vh;
+    align-items: flex-start;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+form input {
+    width: 100%;
+    margin-left: 10px;
+    padding: 8px;
+}
+
+.buttons-row {
+    display: flex;
     justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+input[type="text"],
+textarea {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+textarea {
+    width: 300px;
+    height: 75px;
+    resize: none;
+}
+
+
+
+
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/* Post Stuff */
+.post-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100vh;
+    align-items: flex-start;
+}
+
+.post-container * {
+    margin-top: 5px;
+}
+
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/* Buttons */
+.default-btn {
+    background-color: #4CAF50;
+    border: solid 1px #4CAF50;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: flex;
+    font-size: .75rem;
+    margin-left: 15px;
+    width: 85px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.edit {
+    background-color: blue;
+    border: solid 1px blue;
+    margin-top: 10px;
+}
+
+.home {
+    background-color: green;
+    border: solid 1px green;
+    margin-top: 10px;
+}
+
+.delete {
+    background-color: red;
+    border: solid 1px red;
+    margin-top: 10px;
+}
+
+.cancel {
+    background-color: transparent;
+    border: 1px solid rgb(95, 95, 240);
+    color: rgb(95, 95, 240);
+}
+
+button:hover {
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    transition: background-color 0.5s, color 0.5s, border 0.5s;
 }

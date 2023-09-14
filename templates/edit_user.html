@@ -2,16 +2,24 @@
 
 {% block content %}
 <h1>Edit a user</h1>
-<form method="POST" action="/users/{{ user.id }}/edit" class="form-container">
-  <p>First Name:</p>
-  <input name="first_name" value="{{ user.first_name }}">
-  <p>Last Name:</p>
-  <input name="last_name" value="{{ user.last_name }}">
-  <p>Profile Picture:</p>
-  <input name="prof_pic" value="{{ user.profile_picture }}">
-  <div class="button-container-edit">
-    <button type="submit" name="action" value="cancel" class="cancel">Cancel</button>
-    <button type="submit" name="action" value="save" class="add">Save</button>
-  </div>
-</form>
+<div class="form-container">
+  <form method="POST" action="/users/{{ user.id }}/edit">
+      <div class="form-row">
+          <label for="first_name">First Name:</label>
+          <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}">
+      </div>
+      <div class="form-row">
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}">
+      </div>
+      <div class="form-row">
+        <label for="last_name">Profile Picture:</label>
+        <input type="text" id="prof_pic" name="prof_pic" value="{{ user.profile_picture }}">
+      </div>
+      <div class="form-row buttons-row">
+        <button type="submit" name="action" value="cancel" class="default-btn cancel">Cancel</button>
+        <button type="submit" name="action" value="save" class="default-btn">Save</button>
+      </div>
+  </form>
+</div>
 {% endblock %}

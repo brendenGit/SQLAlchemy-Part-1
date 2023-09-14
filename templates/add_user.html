@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create a user</h1>
+<div class="form-container">
+  <form method="POST" id="form">
+    <div class="form-row">
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name" placeholder="Enter the users first name" required>
+    </div>
+    <div class="form-row">
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" name="last_name" placeholder="Enter the users last name" required>
+    </div>
+    <div class="form-row">
+      <label for="last_name">Profile Picture:</label>
+      <input type="text" id="prof_pic" name="prof_pic" placeholder="Enter an image URL">
+    </div>
+    <div class="form-row buttons-row">
+      <button name="action" value="cancel" class="default-btn cancel" id="cancelButton">Cancel</button>
+      <button type="submit" name="action" value="save" class="default-btn" id="addButton">Add</button>
+    </div>
+  </form>
+</div>
+<script src="/static/app.js"></script>
+{% endblock %}

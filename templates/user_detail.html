@@ -5,11 +5,20 @@
     <img src="{{ user.profile_picture }}" alt="Users Profile Picture" class="profile-picture">
     <div class="user-info">
         <h1 class="user-h1">{{ user.first_name }} {{ user.last_name }}</h1>
-        <div class="button-container">
-            <a href="/users/{{ user.id }}/edit"><button class="edit">Edit</button></a>
+        <div class="buttons-row">
+            <a href="/users/{{ user.id }}/edit"><button class="default-btn edit">Edit</button></a>
             <form method="POST" action="/users/{{ user.id }}/delete">
-                <button type="submit" name="action" value="save" class="delete">Delete</button>
+                <button type="submit" name="action" value="save" class="default-btn delete">Delete</button>
             </form>
+        </div>
+        <div class="posts-container">
+            <h2>Posts</h2>
+            <ul>
+                {% for post in posts %}
+                <li><a href="/posts/{{ post.id }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <a href="/users/{{ user.id }}/posts/new"><button class="default-btn">Add Post</button></a>
         </div>
     </div>
 </div>
