@@ -12,6 +12,10 @@ def connect_db(app):
 class User(db.Model):
     """User class"""
 
+    def __repr__(self):
+        return f"User_id={self.id}, first_name={self.first_name}, last_name={self.last_name}"
+
+
     __tablename__ = 'users'
 
     id = db.Column(db.Integer,
@@ -30,7 +34,8 @@ class User(db.Model):
     
     #post relationship 1 to many
     posts = db.relationship( 'Post', backref='user')
-    
+
+   
 class Post(db.Model):
     """Post class"""
 
@@ -54,3 +59,40 @@ class Post(db.Model):
                            nullable=False)
     user_id = db.Column(db.Integer,
                         db.ForeignKey('users.id'))
+    
+    #relationship: post -> tags through post_tags
+    tags = db.relationship('PostTag', backref='posts_associated')
+
+
+class Tag(db.Model):
+    """Tag class"""
+
+    __tablename__ = 'tags'
+
+    tag_name = db.Column(db.String(20),
+                    primary_key=True,
+                    nullable=False,
+                    unique=True)
+    
+    #relationship: tag -> posts through post_tags
+    posts = db.relationship('PostTag', backref='tag')
+
+    def __repr__(self):
+        return f"Tag_id={self.id}, tag_name={self.name}"
+    
+
+class PostTag(db.Model):
+    """Mapping of tags to posts"""
+
+    __tablename__ = 'post_tags'
+
+    tag_name = db.Column(db.Text,
+                       db.ForeignKey("tags.tag_name"),
+                       primary_key=True)
+
+    post_id = db.Column(db.Integer,
+                        db.ForeignKey("posts.id"),
+                        primary_key=True)
+    
+    def __repr__(self):
+        return f"Tag Name={self.tag_name}, Post ID={self.post_id}, Post Title={self.posts_associated.title} "

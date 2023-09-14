@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template, request, redirect
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User, Post
+from models import db, connect_db, User, Post, Tag, PostTag
 
 app = Flask(__name__)
 
@@ -178,5 +178,77 @@ def delete_post(post_id):
         db.session.commit()
 
         return redirect(f'/users/{user_id}')
+    else:
+        return "Post not found", 404 
+    
+
+@app.route("/tags")
+def list_tags():
+    """list all tags"""
+
+    tags = Tag.query.all()
+    return render_template("tag_list.html", tags=tags)
+
+
+@app.route("/tags/<tag_name>")
+def view_tag(tag_name):
+    """view a specific tag"""
+
+    tag = Tag.query.get_or_404(tag_name)
+    associated_posts = Post.query.join(PostTag).join(Tag).filter(Tag.tag_name == tag.tag_name).all()
+
+    return render_template("view_tag.html", tag=tag, associated_posts=associated_posts)
+
+
+@app.route("/tags/new", methods=['GET','POST'])
+def add_tag():
+    """add a tag"""
+
+    if request.method == 'GET':
+        return render_template("add_tag.html")
+    
+    elif request.method == 'POST':
+        tag_name = request.form['tag_name']
+
+        tag = Tag(tag_name=tag_name)
+        db.session.add(tag)
+        db.session.commit()
+
+        return redirect(f"/tags")
+    
+
+@app.route("/tags/<tag_name>/edit", methods=['GET','POST'])
+def edit_tag(tag_name):
+    """edit a specific post"""
+
+    if request.method == 'GET':
+        tag = Tag.query.get_or_404(tag_name)
+        return render_template("edit_tag.html", tag=tag)
+    
+    elif request.method == 'POST':
+        tag = Tag.query.get(tag_name)
+        tag_name = request.form['tag_name']
+
+        if tag:
+            tag.tag_name = tag_name
+            db.session.commit()
+
+            return redirect(f"/tags/{tag_name}")
+        
+        else:
+            return "User not found", 404
+    
+
+@app.route("/tags/<tag_name>/delete", methods=['POST'])
+def delete_tag(tag_name):
+    """delete a tag"""
+
+    tag = Tag.query.get(tag_name)
+
+    if tag:
+        db.session.delete(tag)
+        db.session.commit()
+
+        return redirect(f'/tags')
     else:
         return "Post not found", 404 

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ tag.tag_name }}</h1>
+<ul>
+    {% for post in associated_posts %}
+    <li><a href="/posts/{{ post.id }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+<div id="tagButtons">
+    <a href="/tags"><button class="default-btn home" id="homeButton">Tags</button></a>
+    <a href="/tags/{{ tag.tag_name }}/edit"><button class=" default-btn edit" id="editButton">Edit</button></a>
+    <form method="POST" id="delete_tag" action="/tags/{{ tag.tag_name }}/delete">
+        <button type="submit" class="default-btn delete" id="deleteButton">Delete</button>
+    </form>
+</div>
+{% endblock %}

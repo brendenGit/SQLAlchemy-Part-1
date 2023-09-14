@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create a tag</h1>
+<div class="form-container">
+    <form method="POST" id="form">
+        <div class="form-row">
+            <label for="tag_name">Name:</label>
+            <input type="text" id="tag_name" name="tag_name" placeholder="Enter a name for the tag">
+        </div>
+        <div class="form-row buttons-row">
+            <button class="default-btn cancel" id="cancelButton">Cancel</button>
+            <button type="submit" name="action" value="save" class="default-btn" id="addButton">Add</button>
+        </div>
+    </form>
+</div>
+<script src="/static/app.js"></script>
+{% endblock %}

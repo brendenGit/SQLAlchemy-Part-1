@@ -142,3 +142,8 @@ button:hover {
     border: 1px solid black;
     transition: background-color 0.5s, color 0.5s, border 0.5s;
 }
+
+#tagButtons {
+    display: flex;
+    flex-direction: row;
+}

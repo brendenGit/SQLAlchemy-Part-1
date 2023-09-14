@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Edit {{ tag.tag_name }}</h1>
+<div class="form-container">
+    <form method="POST" id="form">
+        <div class="form-row">
+            <label for="tag_name">Name:</label>
+            <input type="text" id="tag_name" name="tag_name" value="{{ tag.tag_name }}"">
+        </div>
+        <div class="form-row buttons-row">
+            <button class="default-btn cancel" id="cancelButton">Cancel</button>
+            <button type="submit" class="default-btn" id="editTagButton">Edit</button>
+        </div>
+    </form>
+</div>
+<script src="/static/app.js"></script>
+{% endblock %}
