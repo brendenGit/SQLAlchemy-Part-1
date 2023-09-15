@@ -43,23 +43,29 @@ a {
 
 .form-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
     margin-bottom: 10px;
-    width: 100%;
+}
+
+.tags-container {
+    display: flex;
+    flex-direction: column;
 }
 
 form input {
     width: 100%;
-    margin-left: 10px;
+    margin-left: 20px;
     padding: 8px;
+}
+
+form label {
+    margin-right:10px;
 }
 
 .buttons-row {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 10px;
 }
 
 input[type="text"],
@@ -146,4 +152,25 @@ button:hover {
 #tagButtons {
     display: flex;
     flex-direction: row;
+}
+
+
+/*--------------------------------------------*/
+/*--------------------------------------------*/
+/* tags */
+.tags-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tag {
+    margin-left: 8px;
+    border: solid 1px blueviolet;
+    color: white;
+    background: blueviolet;
+    font-size: .85rem;
+    border-radius: 5px;
+    padding: 2px;
+    font-weight: bold;
 }

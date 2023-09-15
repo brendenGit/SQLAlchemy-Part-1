@@ -61,7 +61,7 @@ class Post(db.Model):
                         db.ForeignKey('users.id'))
     
     #relationship: post -> tags through post_tags
-    tags = db.relationship('PostTag', backref='posts_associated')
+    tags = db.relationship('Tag', secondary='post_tags', backref='associated_posts')
 
 
 class Tag(db.Model):
@@ -75,10 +75,10 @@ class Tag(db.Model):
                     unique=True)
     
     #relationship: tag -> posts through post_tags
-    posts = db.relationship('PostTag', backref='tag')
+    posts = db.relationship('PostTag', backref='tags')
 
     def __repr__(self):
-        return f"Tag_id={self.id}, tag_name={self.name}"
+        return f"Tag Name={self.tag_name}"
     
 
 class PostTag(db.Model):
@@ -95,4 +95,4 @@ class PostTag(db.Model):
                         primary_key=True)
     
     def __repr__(self):
-        return f"Tag Name={self.tag_name}, Post ID={self.post_id}, Post Title={self.posts_associated.title} "
+        return f"Tag Name={self.tag_name}, Post ID={self.post_id}, Post Title={self.posts_associated.title}"

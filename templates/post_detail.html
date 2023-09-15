@@ -5,6 +5,12 @@
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
     <p><i>By {{ post.user.first_name }} {{ post.user.last_name }}</i></p>
+    <div class="tags-container">
+        <p><b>Tags:</b></p>
+        {% for tag in tags %}
+        <p class="tag">{{ tag.tag_name }}</p>
+        {% endfor %}
+    </div>
     <div class="buttons-row">
         <a href="/users"><button class="default-btn home" id="homeButton">Home</button></a>
         <a href="/posts/{{ post.id }}/edit"><button class="default-btn edit" id="editButton">Edit</button></a>
